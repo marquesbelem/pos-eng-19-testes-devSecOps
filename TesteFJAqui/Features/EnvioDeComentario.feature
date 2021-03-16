@@ -5,7 +5,7 @@ Funcionalidade: EnvioDeComentario
 
 
 Cenário: Quando o usuario auntenticado enviar um comentario, deverá ser adicionado na lista
-	Dado que o usuário acessou a paginal inicial 
+	Dado que o usuário acessou a pagina inicial 
 	E deseja compartilhar um comentario na plataforma
 	E o usuário está na página de login
 	E o usuário informar "email" com o valor igual a "camila@teste.com"
@@ -20,7 +20,7 @@ Cenário: Quando o usuario auntenticado enviar um comentario, deverá ser adicio
 
 	
 Cenário: Quando o usuario não auntenticado enviar um comentario, deverá ser adicionado na lista
-	Dado que o usuário acessou a paginal inicial 
+	Dado que o usuário acessou a pagina inicial 
 	E deseja compartilhar um comentario na plataforma
 	E o usuário acessar a página de ideias 
 	E o usuário selecionar uma ideia clicando no botão de saber mais

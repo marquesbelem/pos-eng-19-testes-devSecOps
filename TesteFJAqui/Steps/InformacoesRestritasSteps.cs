@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System;
 using TechTalk.SpecFlow;
 
 namespace TesteFJAqui
@@ -27,8 +28,8 @@ namespace TesteFJAqui
         }
 
 
-        [Given(@"que o usuário acessou a paginal inicial")]
-        public void DadoQueOUsuarioAcessouAPaginalInicial()
+        [Given(@"que o usuário acessou a pagina inicial")]
+        public void DadoQueOUsuarioAcessouAPaginaInicial()
         {
             browser.Navigate().GoToUrl(uri);
         }
@@ -95,7 +96,9 @@ namespace TesteFJAqui
         [Then(@"o usuário deverá vê uma mensagem de sucesso")]
         public void EntaoOUsuarioDeveraVerUmaMensagemDeSucesso()
         {
-            System.Threading.Thread.Sleep(2000);
+            // System.Threading.Thread.Sleep(2000);
+
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
 
             try
             {

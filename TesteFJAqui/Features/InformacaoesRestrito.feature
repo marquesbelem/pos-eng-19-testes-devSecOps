@@ -4,7 +4,7 @@ Funcionalidade: Informações restritas
 	Como um usario desejo acessar minha pagina de perfil
 
 Cenário: Quando o usuario auntenticado acessar a pagina de perfil, as informações sobre a conta deverá está disponivel 
-	Dado que o usuário acessou a paginal inicial
+	Dado que o usuário acessou a pagina inicial
 	E deseja ver informações sobre o seu perfil
 	E o usuário está na página de login
 	E o usuário informar "email" com o valor igual a "camila@teste.com"
@@ -16,7 +16,7 @@ Cenário: Quando o usuario auntenticado acessar a pagina de perfil, as informaç
 
 
 Cenário: Quando o usuario não auntenticado acessar a pagina de perfil, as informações sobre a conta deverá está indisponivel 
-	Dado que o usuário acessou a paginal inicial
+	Dado que o usuário acessou a pagina inicial
 	E deseja ver informações sobre o seu perfil
 	E o usuário não está autenticado
 	E o usuário acessar a página do perfil   

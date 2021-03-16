@@ -122,7 +122,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.Given("que o usuário acessou a paginal inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+ testRunner.Given("que o usuário acessou a pagina inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
 #line 8
  testRunner.And("deseja ver informações sobre o seu perfil", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
@@ -183,7 +183,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 19
- testRunner.Given("que o usuário acessou a paginal inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+ testRunner.Given("que o usuário acessou a pagina inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
 #line 20
  testRunner.And("deseja ver informações sobre o seu perfil", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");

@@ -20,7 +20,7 @@ namespace TesteFJAqui.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class EnvioDeComentarioFeature
+    public partial class OcutarIdIdeiasFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -29,7 +29,7 @@ namespace TesteFJAqui.Features
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "EnvioDeComentario.feature"
+#line 1 "OcutarIdIdeias.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -48,7 +48,7 @@ namespace TesteFJAqui.Features
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-br"), "Features", "EnvioDeComentario", "\tComo um usario desejo escrever comentarios em ideias na plataforma", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-br"), "Features", "OcutarIdIdeias", "\tComo um usuario desejo vê as ideias sem saber qual é o ID ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -63,9 +63,9 @@ namespace TesteFJAqui.Features
         public virtual void TestInitialize()
         {
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "EnvioDeComentario")))
+                        && (testRunner.FeatureContext.FeatureInfo.Title != "OcutarIdIdeias")))
             {
-                global::TesteFJAqui.Features.EnvioDeComentarioFeature.FeatureSetup(null);
+                global::TesteFJAqui.Features.OcutarIdIdeiasFeature.FeatureSetup(null);
             }
         }
         
@@ -92,16 +92,16 @@ namespace TesteFJAqui.Features
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quando o usuario auntenticado enviar um comentario, deverá ser adicionado na list" +
-            "a")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "EnvioDeComentario")]
-        public virtual void QuandoOUsuarioAuntenticadoEnviarUmComentarioDeveraSerAdicionadoNaLista()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quando um usuario acessar a plataforma e depurar, ele não pode ter acesso ao Id d" +
+            "as ideias")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "OcutarIdIdeias")]
+        public virtual void QuandoUmUsuarioAcessarAPlataformaEDepurarEleNaoPodeTerAcessoAoIdDasIdeias()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quando o usuario auntenticado enviar um comentario, deverá ser adicionado na list" +
-                    "a", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quando um usuario acessar a plataforma e depurar, ele não pode ter acesso ao Id d" +
+                    "as ideias", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -121,58 +121,36 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 8
+#line 7
  testRunner.Given("que o usuário acessou a pagina inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
+#line 8
+ testRunner.And("o usuário deseja visualizar alguma ideia", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line hidden
 #line 9
- testRunner.And("deseja compartilhar um comentario na plataforma", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("o usuário conseguiu ativar o modo inspecto", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
 #line 10
- testRunner.And("o usuário está na página de login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.When("o usuário clicar em inspecionar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line hidden
 #line 11
- testRunner.And("o usuário informar \"email\" com o valor igual a \"camila@teste.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 12
- testRunner.And("o usuário informar \"pass\" com o valor igual a \"camila123\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 13
- testRunner.When("o usuário clicar no botão de entrar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-#line hidden
-#line 14
- testRunner.Then("o usuário deverá vê uma mensagem de sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
-#line hidden
-#line 15
- testRunner.And("o usuário acessar a página de ideias", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 16
- testRunner.And("o usuário selecionar uma ideia clicando no botão de saber mais", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 17
- testRunner.And("o usuário informar \"comentario\" com o valor igual \"essa ideia parece ficar legal " +
-                        "em 3D\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 18
- testRunner.And("clicar no botão de comentar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 19
- testRunner.Then("o usuário deverá vê uma mensagem de sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+ testRunner.Then("o usuário não deverá vê nenhum Id das ideias", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quando o usuario não auntenticado enviar um comentario, deverá ser adicionado na " +
-            "lista")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "EnvioDeComentario")]
-        public virtual void QuandoOUsuarioNaoAuntenticadoEnviarUmComentarioDeveraSerAdicionadoNaLista()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quando um usuario acessar mais detalhes dessa ideia e clicar no botão de voltar, " +
+            "ele não pode ter acesso ao Id das ideias")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "OcutarIdIdeias")]
+        public virtual void QuandoUmUsuarioAcessarMaisDetalhesDessaIdeiaEClicarNoBotaoDeVoltarEleNaoPodeTerAcessoAoIdDasIdeias()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quando o usuario não auntenticado enviar um comentario, deverá ser adicionado na " +
-                    "lista", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 22
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quando um usuario acessar mais detalhes dessa ideia e clicar no botão de voltar, " +
+                    "ele não pode ter acesso ao Id das ideias", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -192,27 +170,20 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 23
+#line 14
  testRunner.Given("que o usuário acessou a pagina inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
-#line 24
- testRunner.And("deseja compartilhar um comentario na plataforma", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line 15
+ testRunner.And("o usuário deseja visualizar alguma ideia", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 25
- testRunner.And("o usuário acessar a página de ideias", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 26
+#line 16
  testRunner.And("o usuário selecionar uma ideia clicando no botão de saber mais", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
-#line 27
- testRunner.And("o usuário informar \"comentario\" com o valor igual \"sem autenticação: essa ideia p" +
-                        "arece ficar legal em 3D\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line 17
+ testRunner.When("o usuário clicar no botão de voltar da página", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line hidden
-#line 28
- testRunner.And("clicar no botão de comentar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-#line 29
- testRunner.Then("o usuário deverá vê uma mensagem de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+#line 18
+ testRunner.Then("o usuário não deverá vê nenhum Id da ideia na url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
             }
             this.ScenarioCleanup();

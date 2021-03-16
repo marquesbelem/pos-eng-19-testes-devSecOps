@@ -48,7 +48,7 @@ namespace TesteFJAqui.Features
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-br"), "Features", "EnvioDeIdeias", "\tComo um usario desejo escrever minhas ideias na plataforma", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("pt-br"), "Features", "EnvioDeIdeias", "\tComo um usuario desejo escrever minhas ideias na plataforma", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -122,7 +122,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.Given("que o usuário acessou a paginal inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+ testRunner.Given("que o usuário acessou a pagina inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
 #line 8
  testRunner.And("deseja compartilhar uma ideia na plataforma", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
@@ -199,7 +199,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 23
- testRunner.Given("que o usuário acessou a paginal inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+ testRunner.Given("que o usuário acessou a pagina inicial", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
 #line 24
  testRunner.And("deseja compartilhar uma ideia na plataforma", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
