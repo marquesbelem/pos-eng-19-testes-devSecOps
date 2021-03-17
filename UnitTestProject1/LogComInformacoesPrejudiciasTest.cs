@@ -53,6 +53,7 @@ namespace SeleniumTests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
+        #region Testes
         [TestMethod]
         public void UsuarioComAcessoInvalidoTest()
         {
@@ -77,6 +78,8 @@ namespace SeleniumTests
                 Assert.Fail();
             }
         }
+        #endregion
+
         private bool IsElementPresent(By by)
         {
             try

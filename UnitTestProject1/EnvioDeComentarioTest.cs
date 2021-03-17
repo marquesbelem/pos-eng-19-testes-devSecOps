@@ -53,6 +53,8 @@ namespace SeleniumTests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
+        #region Testes
+
         [TestMethod]
         public void UsuarioAutenticadoEnviaComentarioTeste()
         {
@@ -129,6 +131,42 @@ namespace SeleniumTests
 
             Assert.AreEqual(comentarioEsperado, comentarioAdicionado.Text);
         }
+
+        [TestMethod]
+        public void EmailRegistradoQuandoEnviaComentario()
+        {
+            var comentarioParaEnviar = "essa ideia parece promissora";
+            var contemEmailNaPublicacao = 0;
+
+            driver.Navigate().GoToUrl("http://localhost:3000/");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.FindElement(By.XPath("//div[@id='__next']/div/div[2]/nav/div")).Click();
+            driver.FindElement(By.XPath("//div[@id='__next']/div/div[4]/button")).Click();
+            driver.FindElement(By.Id("modal-rules")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.FindElement(By.Id("btn-saber-mais")).Click();
+            driver.FindElement(By.Id("comentario")).Click();
+            driver.FindElement(By.Id("comentario")).Clear();
+            driver.FindElement(By.Id("comentario")).SendKeys(comentarioParaEnviar);
+            driver.FindElement(By.Id("btn-enviar-comentario")).Click();
+            driver.FindElement(By.Id("msg-sucess")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+
+            //Validacao 
+            var campoPublicadoPor = driver.FindElements(By.Id("display-name"));
+
+            for (var i = 0; i < campoPublicadoPor.Count; i++)
+            {
+                if (campoPublicadoPor[i].Text.Contains("@"))
+                {
+                    contemEmailNaPublicacao++;
+                }
+            }
+
+
+            Assert.AreEqual(0, contemEmailNaPublicacao);
+        }
+        #endregion
 
         private bool IsElementPresent(By by)
         {

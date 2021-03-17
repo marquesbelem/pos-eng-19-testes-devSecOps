@@ -53,6 +53,7 @@ namespace SeleniumTests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
+        #region Testes
         [TestMethod]
         public void UsuarioAutenticadoDetalhesDisponiveisTest()
         {
@@ -69,7 +70,7 @@ namespace SeleniumTests
             driver.FindElement(By.LinkText("Olá criador(a), camila, acesse seu perfil")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
 
-            //Validacao 
+            //Validação 
             try
             {
                 driver.FindElement(By.Name("btn-mudar-senha"));
@@ -89,7 +90,7 @@ namespace SeleniumTests
             driver.Navigate().GoToUrl("http://localhost:3000/profile");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
-            //Validacao 
+            //Validação 
             IWebElement msgRestrita = null;
             IWebElement msgBemVindo = null;
             IWebElement btnMudarSenha = null;
@@ -105,6 +106,7 @@ namespace SeleniumTests
                 Assert.IsTrue(msgRestrita != null && msgBemVindo == null && btnMudarSenha == null);
             }
         }
+        #endregion
 
         private bool IsElementPresent(By by)
         {

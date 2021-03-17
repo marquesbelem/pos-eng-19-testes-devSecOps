@@ -53,6 +53,7 @@ namespace SeleniumTests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
+        #region Testes
         [TestMethod]
         public void UsuarioAutenticadoEnviaIdeiaTest()
         {
@@ -82,7 +83,7 @@ namespace SeleniumTests
             driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div/nav/div/div/div/form/div/label[2]")).Click();
             driver.FindElement(By.Id("btn-enviar-ideia")).Click();
 
-            //Validacao 
+            //Validação 
             IWebElement tituloAdicionado = null;
             IWebElement descricaoAdicionado = null;
 
@@ -124,7 +125,7 @@ namespace SeleniumTests
             driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div/nav/div/div/div/form/div/label[2]")).Click();
             driver.FindElement(By.Id("btn-enviar-ideia")).Click();
 
-            //Validacao 
+            //Validação 
             IWebElement tituloAdicionado = null;
             IWebElement descricaoAdicionado = null;
 
@@ -141,6 +142,45 @@ namespace SeleniumTests
             var sucesso = tituloEsperado == tituloAdicionado.Text && descricaoEsperado == descricaoAdicionado.Text;
             Assert.AreEqual(true, sucesso);
         }
+
+        [TestMethod]
+        public void EmailRegistradoQuandoEnviaIdeia()
+        {
+            var contemEmailNaPublicacao = true;
+
+            driver.Navigate().GoToUrl("http://localhost:3000/");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.FindElement(By.XPath("//div[@id='__next']/div/div[4]/button")).Click();
+            driver.FindElement(By.Id("modal-rules")).Click();
+            driver.FindElement(By.XPath("//div[@id='__next']/div/div[4]/button")).Click();
+            driver.FindElement(By.Id("modal-rules")).Click();
+            driver.FindElement(By.Id("btn-escrever-ideia")).Click();
+            driver.FindElement(By.Id("title")).Click();
+            driver.FindElement(By.Id("title")).Clear();
+            driver.FindElement(By.Id("title")).SendKeys("Mario Kart vs Dinossauros");
+            driver.FindElement(By.Id("content")).Click();
+            driver.FindElement(By.Id("content")).Clear();
+            driver.FindElement(By.Id("content")).SendKeys("Tem que correr em uma pista cheio de dinos");
+            driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div/nav/div/div/div/form/div/label[3]")).Click();
+            driver.FindElement(By.Id("btn-enviar-ideia")).Click();
+            driver.FindElement(By.Id("btn-saber-mais")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+
+            //Validação
+            var campoPublicadoPor = driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div[2]")).Text;
+
+            if (campoPublicadoPor.Contains("@"))
+            {
+                contemEmailNaPublicacao = true;
+            }
+            else
+            {
+                contemEmailNaPublicacao = false;
+            }
+
+            Assert.AreEqual(true, contemEmailNaPublicacao);
+        }
+        #endregion
 
         private bool IsElementPresent(By by)
         {

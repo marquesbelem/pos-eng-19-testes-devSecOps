@@ -7,7 +7,7 @@ using System.Text;
 namespace SeleniumTests
 {
     [TestClass]
-    public class OcutarIdIdeiasTest
+    public class TrocaDeSenha
     {
         private static IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -55,44 +55,59 @@ namespace SeleniumTests
 
         #region Testes
         [TestMethod]
-        public void UsuarioAcessaListaDeIdeiasNaoPodeTerAcessoIdNaPagina()
+        public void EmailComProvedorDesconhecido()
         {
-            driver.Navigate().GoToUrl("http://localhost:3000/ideas");
+            var emailParaEnviar = "camila@teste.com";
+            var provedorDeEmailExiste = false;
+
+            driver.Navigate().GoToUrl("http://localhost:3000/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.FindElement(By.Id("btn-access")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.FindElement(By.Id("email")).Click();
+            driver.FindElement(By.Id("email")).Clear();
+            driver.FindElement(By.Id("email")).SendKeys(emailParaEnviar);
 
-            var elements = driver.FindElements(By.Id("btn-saber-mais"));
-            var totalElementsId = 0;
+            driver.Navigate().GoToUrl("https://tools.verifyemailaddress.io/");
+            driver.FindElement(By.XPath("//p")).Click();
+            driver.FindElement(By.Id("input-email-address")).Click();
+            driver.FindElement(By.Id("input-email-address")).Clear();
+            driver.FindElement(By.Id("input-email-address")).SendKeys(emailParaEnviar);
+            driver.FindElement(By.XPath("//div[2]/button")).Click();
 
-            //Validação
-            foreach (var item in elements)
+            //Validação 
+            var resultadoVerificacao = driver.FindElement(By.XPath("//table[@id='dt-grid1']/tbody/tr/td[2]")).Text;
+
+            if (resultadoVerificacao.Contains("Bad"))
             {
-                var alt = item.GetAttribute("href");
-                if (alt != null && alt.Contains("-M"))
-                {
-                    totalElementsId++;
-                }
+                provedorDeEmailExiste = false;
+            }
+            else
+            {
+                provedorDeEmailExiste = true;
             }
 
-            Assert.AreEqual(0, totalElementsId);
-        }
-
-        [TestMethod]
-        public void UsuarioAcessaListaDeIdeiasNaoPodeTerAcessoIdNaUrl()
-        {
-            driver.Navigate().GoToUrl("http://localhost:3000/ideas");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
-
-            driver.Navigate().GoToUrl("http://localhost:3000/ideas/-MT1z5sUapPBVvR4vmkp");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             driver.Navigate().Back();
+            driver.Navigate().GoToUrl("http://localhost:3000/login/access");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.FindElement(By.Id("email")).Click();
+            driver.FindElement(By.Id("email")).Clear();
+            driver.FindElement(By.Id("email")).SendKeys(emailParaEnviar);
+            driver.FindElement(By.Id("pass")).Click();
+            driver.FindElement(By.Id("pass")).Clear();
+            driver.FindElement(By.Id("pass")).SendKeys("asdsdfs");
+            driver.FindElement(By.Id("btn-entrar")).Click();
+            driver.FindElement(By.XPath("(//p[@name='msg-error'])[2]")).Click();
+            driver.FindElement(By.LinkText("Esqueceu a senha?")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.FindElement(By.Name("email")).Click();
+            driver.FindElement(By.Name("email")).Clear();
+            driver.FindElement(By.Name("email")).SendKeys(emailParaEnviar);
+            driver.FindElement(By.Id("btn-enviar-esqueceu-senha")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
 
-            //Validação
-            var url = driver.Url;
-
-            if (url.Contains("-M"))
-            {
-                Assert.Fail();
-            }
+            //Validação 
+            Assert.AreEqual(true, provedorDeEmailExiste);
         }
         #endregion
 
