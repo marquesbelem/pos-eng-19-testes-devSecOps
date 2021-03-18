@@ -7,7 +7,7 @@ using System.Text;
 namespace SeleniumTests
 {
     [TestClass]
-    public class LogComInformacoesPrejudiciasTest
+    public class AvisosComInformacoesPrejudiciasTest
     {
         private static IWebDriver driver;
         private StringBuilder verificationErrors;

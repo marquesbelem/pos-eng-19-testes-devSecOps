@@ -191,7 +191,7 @@ namespace SeleniumTests
         [TestMethod]
         public void EnvioDeIdeiaComTituloElementoHTMLJS()
         {
-            string tituloParaEnviar = "<a href=\"https://www.linkedin.com/\"> Sonic vs Mario </a>";
+            string tituloParaEnviar = "<a href=\"https://www.linkedin.com/\"> Sonic vs Mario 3</a>";
             bool contemHtmlJS = false;
 
             driver.Navigate().GoToUrl("http://localhost:3000/");
@@ -206,7 +206,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("title")).SendKeys(tituloParaEnviar);
             driver.FindElement(By.Id("content")).Click();
             driver.FindElement(By.Id("content")).Clear();
-            driver.FindElement(By.Id("content")).SendKeys("será um jogo de corrida em plataformaa");
+            driver.FindElement(By.Id("content")).SendKeys("será um jogo de corrida em plataformaa 3");
             driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div/nav/div/div/div/form/div/label[3]")).Click();
             driver.FindElement(By.Id("content")).Click();
             driver.FindElement(By.Id("content")).Clear();
