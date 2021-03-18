@@ -17,7 +17,7 @@ namespace SeleniumTests
         [ClassInitialize]
         public static void InitializeClass(TestContext testContext)
         {
-            var options = new ChromeOptions()
+            ChromeOptions options = new ChromeOptions()
             {
                 BinaryLocation = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
             };
@@ -57,11 +57,11 @@ namespace SeleniumTests
         [TestMethod]
         public void UsuarioAutenticadoEnviaIdeiaTest()
         {
-            var tituloParaEnviar = "Sonic vs Mario";
-            var tituloEsperado = tituloParaEnviar;
+            string tituloParaEnviar = "Sonic vs Mario";
+            string tituloEsperado = tituloParaEnviar;
 
-            var descricaoParaEnviar = "um jogo de plataforma onde você é o sonic e seu amigo o mario";
-            var descricaoEsperado = descricaoParaEnviar;
+            string descricaoParaEnviar = "um jogo de plataforma onde você é o sonic e seu amigo o mario";
+            string descricaoEsperado = descricaoParaEnviar;
 
             driver.Navigate().GoToUrl("http://localhost:3000/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
@@ -97,18 +97,18 @@ namespace SeleniumTests
                 Assert.Fail();
             }
 
-            var sucesso = tituloEsperado == tituloAdicionado.Text && descricaoEsperado == descricaoAdicionado.Text;
+            bool sucesso = tituloEsperado == tituloAdicionado.Text && descricaoEsperado == descricaoAdicionado.Text;
             Assert.AreEqual(true, sucesso);
         }
 
         [TestMethod]
         public void UsuarioNaoAutenticadoEnviaIdeiaTest()
         {
-            var tituloParaEnviar = "Sonic vs Mario 2";
-            var tituloEsperado = string.Empty;
+            string tituloParaEnviar = "Sonic vs Mario 2";
+            string tituloEsperado = string.Empty;
 
-            var descricaoParaEnviar = "um jogo de plataforma onde você é o sonic e seu amigo o mario";
-            var descricaoEsperado = string.Empty;
+            string descricaoParaEnviar = "um jogo de plataforma onde você é o sonic e seu amigo o mario";
+            string descricaoEsperado = string.Empty;
 
             driver.Navigate().GoToUrl("http://localhost:3000/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
@@ -139,14 +139,14 @@ namespace SeleniumTests
                 Assert.Fail();
             }
 
-            var sucesso = tituloEsperado == tituloAdicionado.Text && descricaoEsperado == descricaoAdicionado.Text;
+            bool sucesso = tituloEsperado == tituloAdicionado.Text && descricaoEsperado == descricaoAdicionado.Text;
             Assert.AreEqual(true, sucesso);
         }
 
         [TestMethod]
         public void EmailRegistradoQuandoEnviaIdeia()
         {
-            var contemEmailNaPublicacao = true;
+            bool contemEmailNaPublicacao = true;
 
             driver.Navigate().GoToUrl("http://localhost:3000/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
@@ -167,7 +167,7 @@ namespace SeleniumTests
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
 
             //Validação
-            var campoPublicadoPor = driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div[2]")).Text;
+            string campoPublicadoPor = driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div[2]")).Text;
 
             if (campoPublicadoPor.Contains("@"))
             {
@@ -179,6 +179,44 @@ namespace SeleniumTests
             }
 
             Assert.AreEqual(true, contemEmailNaPublicacao);
+        }
+
+        [TestMethod]
+        public void EnvioDeIdeiaComTituloElementoHTMLJS()
+        {
+            string tituloParaEnviar = "<a href=\"https://www.linkedin.com/\"> Sonic vs Mario </a>";
+            bool contemHtmlJS = false;
+
+            driver.Navigate().GoToUrl("http://localhost:3000/");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]")).Click();
+            driver.FindElement(By.XPath("//div[@id='__next']/div/div[4]/button")).Click();
+            driver.FindElement(By.Id("modal-rules")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.FindElement(By.Id("btn-escrever-ideia")).Click();
+            driver.FindElement(By.Id("title")).Click();
+            driver.FindElement(By.Id("title")).Clear();
+            driver.FindElement(By.Id("title")).SendKeys(tituloParaEnviar);
+            driver.FindElement(By.Id("content")).Click();
+            driver.FindElement(By.Id("content")).Clear();
+            driver.FindElement(By.Id("content")).SendKeys("será um jogo de corrida em plataformaa");
+            driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div/nav/div/div/div/form/div/label[3]")).Click();
+            driver.FindElement(By.Id("content")).Click();
+            driver.FindElement(By.Id("content")).Clear();
+            driver.FindElement(By.Id("content")).SendKeys("será um jogo de corrida em plataforma");
+            driver.FindElement(By.Id("btn-enviar-ideia")).Click();
+
+            if (tituloParaEnviar.Contains("href") || tituloParaEnviar.Contains("alert") || tituloParaEnviar.Contains("js")
+                || tituloParaEnviar.Contains("src") || tituloParaEnviar.Contains("script"))
+            {
+                contemHtmlJS = true;
+            }
+            else
+            {
+                contemHtmlJS = false;
+            }
+
+            Assert.AreEqual(false, contemHtmlJS);
         }
         #endregion
 
