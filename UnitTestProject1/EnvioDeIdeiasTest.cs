@@ -57,10 +57,10 @@ namespace SeleniumTests
         [TestMethod]
         public void UsuarioAutenticadoEnviaIdeiaTest()
         {
-            string tituloParaEnviar = "Sonic vs Mario";
+            string tituloParaEnviar = "Corrida de batatas";
             string tituloEsperado = tituloParaEnviar;
 
-            string descricaoParaEnviar = "um jogo de plataforma onde você é o sonic e seu amigo o mario";
+            string descricaoParaEnviar = "batatas: um jogo de plataforma onde você é o sonic e seu amigo o mario";
             string descricaoEsperado = descricaoParaEnviar;
 
             driver.Navigate().GoToUrl("http://localhost:3000/");
@@ -88,7 +88,7 @@ namespace SeleniumTests
             IWebElement descricaoAdicionado = null;
 
             string idTitulo = "titulo-" + tituloParaEnviar;
-            string idDescricao = "descricao-" + descricaoParaEnviar;
+            string idDescricao = "descricao-" + tituloParaEnviar;
 
             try
             {
@@ -110,7 +110,7 @@ namespace SeleniumTests
             string tituloParaEnviar = "Sonic vs Mario 2";
             string tituloEsperado = string.Empty;
 
-            string descricaoParaEnviar = "um jogo de plataforma onde você é o sonic e seu amigo o mario";
+            string descricaoParaEnviar = "um jogo de plataforma onde você é o sonic e seu amigo o mario 2";
             string descricaoEsperado = string.Empty;
 
             driver.Navigate().GoToUrl("http://localhost:3000/");
@@ -133,7 +133,7 @@ namespace SeleniumTests
             IWebElement descricaoAdicionado = null;
 
             string idTitulo = "titulo-" + tituloParaEnviar;
-            string idDescricao = "descricao-" + descricaoParaEnviar;
+            string idDescricao = "descricao-" + tituloParaEnviar;
 
             try
             {
@@ -146,6 +146,7 @@ namespace SeleniumTests
             }
 
             bool sucesso = tituloEsperado == tituloAdicionado.Text && descricaoEsperado == descricaoAdicionado.Text;
+
             Assert.AreEqual(true, sucesso);
         }
 

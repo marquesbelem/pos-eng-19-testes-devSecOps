@@ -17,7 +17,7 @@ namespace SeleniumTests
         [ClassInitialize]
         public static void InitializeClass(TestContext testContext)
         {
-            var options = new ChromeOptions()
+            ChromeOptions options = new ChromeOptions()
             {
                 BinaryLocation = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
             };
@@ -58,15 +58,15 @@ namespace SeleniumTests
         public void UsuarioAcessaListaDeIdeiasNaoPodeTerAcessoIdNaPagina()
         {
             driver.Navigate().GoToUrl("http://localhost:3000/ideas");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
 
-            var elements = driver.FindElements(By.Id("btn-saber-mais"));
-            var totalElementsId = 0;
+            System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> elements = driver.FindElements(By.Id("btn-saber-mais"));
+            int totalElementsId = 0;
 
             //Validação
-            foreach (var item in elements)
+            foreach (IWebElement item in elements)
             {
-                var alt = item.GetAttribute("href");
+                string alt = item.GetAttribute("href");
                 if (alt != null && alt.Contains("-M"))
                 {
                     totalElementsId++;
@@ -84,10 +84,9 @@ namespace SeleniumTests
 
             driver.Navigate().GoToUrl("http://localhost:3000/ideas/-MT1z5sUapPBVvR4vmkp");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
-            driver.Navigate().Back();
 
             //Validação
-            var url = driver.Url;
+            string url = driver.Url;
 
             if (url.Contains("-M"))
             {

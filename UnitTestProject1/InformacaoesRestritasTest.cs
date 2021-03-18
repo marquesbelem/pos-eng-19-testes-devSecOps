@@ -17,7 +17,7 @@ namespace SeleniumTests
         [ClassInitialize]
         public static void InitializeClass(TestContext testContext)
         {
-            var options = new ChromeOptions()
+            ChromeOptions options = new ChromeOptions()
             {
                 BinaryLocation = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
             };

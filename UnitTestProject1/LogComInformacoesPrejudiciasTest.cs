@@ -17,7 +17,7 @@ namespace SeleniumTests
         [ClassInitialize]
         public static void InitializeClass(TestContext testContext)
         {
-            var options = new ChromeOptions()
+            ChromeOptions options = new ChromeOptions()
             {
                 BinaryLocation = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
             };
@@ -71,7 +71,7 @@ namespace SeleniumTests
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
 
             // Validação.
-            var text = driver.FindElement(By.XPath("(//p[@name='msg-error'])[2]")).Text;
+            string text = driver.FindElement(By.XPath("(//p[@name='msg-error'])[2]")).Text;
 
             if (text.Contains("user") || text.Contains("password") || text.Contains("email"))
             {

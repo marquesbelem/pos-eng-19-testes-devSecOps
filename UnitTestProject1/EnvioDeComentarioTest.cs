@@ -154,7 +154,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("comentario")).SendKeys(comentarioParaEnviar);
             driver.FindElement(By.Id("btn-enviar-comentario")).Click();
             driver.FindElement(By.Id("msg-sucess")).Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
 
             //Validacao 
             System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> campoPublicadoPor = driver.FindElements(By.Id("display-name"));
@@ -167,8 +167,7 @@ namespace SeleniumTests
                 }
             }
 
-
-            Assert.AreEqual(0, contemEmailNaPublicacao);
+            Assert.AreEqual(true, contemEmailNaPublicacao > 0);
         }
         #endregion
 
