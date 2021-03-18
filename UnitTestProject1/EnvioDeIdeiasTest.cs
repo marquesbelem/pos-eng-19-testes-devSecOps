@@ -87,10 +87,13 @@ namespace SeleniumTests
             IWebElement tituloAdicionado = null;
             IWebElement descricaoAdicionado = null;
 
+            string idTitulo = "titulo-" + tituloParaEnviar;
+            string idDescricao = "descricao-" + descricaoParaEnviar;
+
             try
             {
-                tituloAdicionado = driver.FindElement(By.XPath("//div[@id='main']/div/div/div/h3"));
-                descricaoAdicionado = driver.FindElement(By.XPath("//div[@id='main']/div/div/div/p"));
+                tituloAdicionado = driver.FindElement(By.Id(idTitulo));
+                descricaoAdicionado = driver.FindElement(By.Id(idDescricao));
             }
             catch (NoSuchElementException)
             {
@@ -129,10 +132,13 @@ namespace SeleniumTests
             IWebElement tituloAdicionado = null;
             IWebElement descricaoAdicionado = null;
 
+            string idTitulo = "titulo-" + tituloParaEnviar;
+            string idDescricao = "descricao-" + descricaoParaEnviar;
+
             try
             {
-                tituloAdicionado = driver.FindElement(By.XPath("//div[@id='main']/div/div/div/h3"));
-                descricaoAdicionado = driver.FindElement(By.XPath("//div[@id='main']/div/div/div/p"));
+                tituloAdicionado = driver.FindElement(By.Id(idTitulo));
+                descricaoAdicionado = driver.FindElement(By.Id(idDescricao));
             }
             catch (NoSuchElementException)
             {

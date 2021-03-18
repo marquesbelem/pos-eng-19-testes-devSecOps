@@ -17,7 +17,7 @@ namespace SeleniumTests
         [ClassInitialize]
         public static void InitializeClass(TestContext testContext)
         {
-            var options = new ChromeOptions()
+            ChromeOptions options = new ChromeOptions()
             {
                 BinaryLocation = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
             };
@@ -58,8 +58,8 @@ namespace SeleniumTests
         [TestMethod]
         public void UsuarioAutenticadoEnviaComentarioTeste()
         {
-            var comentarioParaEnviar = "essa ideia parece promissora";
-            var comentarioEsperado = comentarioParaEnviar;
+            string comentarioParaEnviar = "essa ideia parece promissora";
+            string comentarioEsperado = comentarioParaEnviar;
 
             driver.Navigate().GoToUrl("http://localhost:3000/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
@@ -84,9 +84,11 @@ namespace SeleniumTests
             //Validacao 
             IWebElement comentarioAdicionado = null;
 
+            string idComentario = "comment-" + comentarioParaEnviar;
+
             try
             {
-                comentarioAdicionado = driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div[2]/div[2]/div[11]/article/div/p"));
+                comentarioAdicionado = driver.FindElement(By.Id(idComentario));
             }
             catch (NoSuchElementException)
             {
@@ -99,8 +101,8 @@ namespace SeleniumTests
         [TestMethod]
         public void UsuarioNaoAutenticadoEnviaComentarioTeste()
         {
-            var comentarioParaEnviar = "essa ideia parece promissora";
-            var comentarioEsperado = string.Empty;
+            string comentarioParaEnviar = "essa ideia parece promissora";
+            string comentarioEsperado = string.Empty;
 
             driver.Navigate().GoToUrl("http://localhost:3000/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
@@ -120,9 +122,11 @@ namespace SeleniumTests
             //Validacao 
             IWebElement comentarioAdicionado = null;
 
+            string idComentario = "comment-" + comentarioParaEnviar;
+
             try
             {
-                comentarioAdicionado = driver.FindElement(By.XPath("//div[@id='__next']/div/div[3]/div[2]/div[2]/div[11]/article/div/p"));
+                comentarioAdicionado = driver.FindElement(By.Id(idComentario));
             }
             catch (NoSuchElementException)
             {
@@ -135,8 +139,8 @@ namespace SeleniumTests
         [TestMethod]
         public void EmailRegistradoQuandoEnviaComentario()
         {
-            var comentarioParaEnviar = "essa ideia parece promissora";
-            var contemEmailNaPublicacao = 0;
+            string comentarioParaEnviar = "essa ideia parece promissora";
+            int contemEmailNaPublicacao = 0;
 
             driver.Navigate().GoToUrl("http://localhost:3000/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
@@ -153,9 +157,9 @@ namespace SeleniumTests
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
 
             //Validacao 
-            var campoPublicadoPor = driver.FindElements(By.Id("display-name"));
+            System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> campoPublicadoPor = driver.FindElements(By.Id("display-name"));
 
-            for (var i = 0; i < campoPublicadoPor.Count; i++)
+            for (int i = 0; i < campoPublicadoPor.Count; i++)
             {
                 if (campoPublicadoPor[i].Text.Contains("@"))
                 {
